@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Receive targeted prayer and scriptural encouragement for your specific need at WEBIC Lagos. God still answers prayer." />
+  <title>Prayer Support — WEBIC Lagos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .detail-hero {
+      padding: 120px 0 80px;
+      text-align: center;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .detail-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+    }
+    .detail-hero__emoji { font-size: 56px; margin-bottom: 16px; display: block; }
+    .detail-hero__label {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 100px;
+      padding: 5px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 16px;
+    }
+    .detail-hero__title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      color: #fff;
+      margin: 0 0 18px;
+      line-height: 1.2;
+    }
+    .detail-hero__tagline {
+      font-size: 18px;
+      color: rgba(255,255,255,0.85);
+      max-width: 580px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* Scripture Promise Block */
+    .promise-block {
+      background: #fff;
+      border-left: 5px solid var(--color-gold);
+      border-radius: 0 12px 12px 0;
+      padding: 28px 32px;
+      margin-bottom: 32px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    }
+    .promise-block__verse {
+      font-size: 18px;
+      font-family: var(--font-serif);
+      color: var(--color-heading);
+      font-style: italic;
+      line-height: 1.7;
+      margin: 0 0 10px;
+    }
+    .promise-block__ref {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-primary);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* Content grid */
+    .detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 48px;
+      align-items: start;
+    }
+
+    /* Sticky sidebar form */
+    .sidebar-form {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 4px 30px rgba(22,53,128,0.1);
+      padding: 36px 28px;
+      position: sticky;
+      top: 90px;
+    }
+    .sidebar-form__title {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      color: var(--color-heading);
+      margin: 0 0 6px;
+    }
+    .sidebar-form__sub {
+      font-size: 14px;
+      color: var(--color-muted);
+      line-height: 1.6;
+      margin: 0 0 24px;
+    }
+    .char-counter { font-size: 12px; color: var(--color-muted); text-align: right; margin-top: 4px; }
+
+    /* Word of Encouragement */
+    .encouragement-card {
+      background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
+      border-radius: 16px;
+      padding: 36px;
+      color: #fff;
+      margin-bottom: 28px;
+    }
+    .encouragement-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      color: #fff;
+      margin: 0 0 14px;
+    }
+    .encouragement-card p {
+      font-size: 15.5px;
+      color: rgba(255,255,255,0.88);
+      line-height: 1.75;
+      margin: 0 0 12px;
+    }
+    .encouragement-card p:last-of-type { margin-bottom: 0; }
+
+    /* Prayer points list */
+    .prayer-points { list-style: none; padding: 0; margin: 0 0 32px; }
+    .prayer-points li {
+      display: flex;
+      gap: 14px;
+      padding: 16px 0;
+      border-bottom: 1px solid #f0f0f0;
+      font-size: 15.5px;
+      color: var(--color-body);
+      line-height: 1.65;
+    }
+    .prayer-points li:last-child { border-bottom: none; }
+    .prayer-points__num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--color-primary);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* Testimony */
+    .testimony-detail {
+      background: var(--color-bg-alt);
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 28px;
+    }
+    .testimony-detail__quote {
+      font-size: 16px;
+      font-style: italic;
+      color: var(--color-body);
+      line-height: 1.75;
+      margin: 0 0 16px;
+    }
+    .testimony-detail__quote::before { content: '\201C'; font-size: 2rem; color: var(--color-primary); line-height: 0; vertical-align: -0.4em; margin-right: 4px; }
+    .testimony-detail__quote::after  { content: '\201D'; font-size: 2rem; color: var(--color-primary); line-height: 0; vertical-align: -0.4em; margin-left: 4px; }
+    .testimony-detail__author {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* Related categories */
+    .related-cats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .related-cat-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border: 1.5px solid #e5e7eb;
+      border-radius: 100px;
+      font-size: 13.5px;
+      color: var(--color-body);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .related-cat-link:hover { border-color: var(--color-primary); color: var(--color-primary); background: #f0f4ff; }
+
+    @media (max-width: 1024px) {
+      .detail-grid { grid-template-columns: 1fr; }
+      .sidebar-form { position: static; }
+    }
+    @media (max-width: 768px) {
+      .detail-hero { padding: 100px 20px 60px; }
+      .promise-block { padding: 20px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav" id="main-nav" data-transparent="true" style="background:transparent;">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <img src="../Logos/images.jpg" alt="WEBIC Logo" class="nav__logo-img" />
+        <div><div class="nav__logo-text">WEBIC</div><div class="nav__logo-sub">World Evangelism Bible Church</div></div>
+      </a>
+      <ul class="nav__links">
+        <li><a href="about.html" class="nav__link">About</a></li>
+        <li><a href="sermons.html" class="nav__link">Sermons</a></li>
+        <li><a href="ministries.html" class="nav__link">Ministries</a></li>
+        <li><a href="events.html" class="nav__link">Events</a></li>
+        <li><a href="find-help.html" class="nav__link nav__link--find-help">Prayer</a></li>
+        <li><a href="contact.html" class="nav__link">Contact</a></li>
+      </ul>
+      <div class="nav__actions">
+        <a href="give.html" class="btn btn--ghost btn--sm">Give</a>
+        <a href="plan-visit.html" class="btn btn--primary btn--sm">Plan a Visit</a>
+        <button class="nav__menu-btn" id="menu-btn"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+  <div class="mobile-nav" id="mobile-nav">
+    <button class="mobile-nav__close" id="mobile-nav-close">✕</button>
+    <ul class="mobile-nav__links">
+      <li><a href="index.html" class="mobile-nav__link">Home</a></li>
+      <li><a href="about.html" class="mobile-nav__link">About</a></li>
+      <li><a href="sermons.html" class="mobile-nav__link">Sermons</a></li>
+      <li><a href="ministries.html" class="mobile-nav__link">Ministries</a></li>
+      <li><a href="events.html" class="mobile-nav__link">Events</a></li>
+      <li><a href="find-help.html" class="mobile-nav__link mobile-nav__link--find-help">Prayer Support</a></li>
+      <li><a href="plan-visit.html" class="mobile-nav__link">Plan a Visit</a></li>
+      <li><a href="give.html" class="mobile-nav__link">Give</a></li>
+      <li><a href="contact.html" class="mobile-nav__link">Contact</a></li>
+    </ul>
+  </div>
+
+  <main>
+
+    <!-- Dynamic Hero — filled by JS based on ?category= param -->
+    <div class="detail-hero" id="detail-hero">
+      <div class="container" style="position:relative;z-index:1;">
+        <span class="detail-hero__emoji" id="hero-emoji">🙏</span>
+        <span class="detail-hero__label" id="hero-label">Prayer &amp; Support</span>
+        <h1 class="detail-hero__title" id="hero-title">Healing &amp; Health</h1>
+        <p class="detail-hero__tagline" id="hero-tagline">God is still the Healer. He bore your sickness on the cross and by His stripes you are healed.</p>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="container">
+        <div class="detail-grid">
+
+          <!-- Main Content -->
+          <div>
+
+            <!-- Breadcrumb -->
+            <div style="display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--color-muted);margin-bottom:32px;">
+              <a href="find-help.html" style="color:var(--color-primary);text-decoration:none;font-weight:500;">Prayer &amp; Support</a>
+              <span>›</span>
+              <span id="breadcrumb-label">Healing</span>
+            </div>
+
+            <!-- Scripture Promise -->
+            <div class="promise-block reveal" id="promise-block">
+              <p class="promise-block__verse" id="promise-verse">"But he was pierced for our transgressions, he was crushed for our iniquities; the punishment that brought us peace was on him, and by his wounds we are healed."</p>
+              <div class="promise-block__ref" id="promise-ref">Isaiah 53:5 (NIV)</div>
+            </div>
+
+            <!-- Word of Encouragement -->
+            <div class="encouragement-card reveal" id="encouragement-block">
+              <h3 id="enc-title">A Word For You</h3>
+              <div id="enc-body">
+                <p>If you are reading this page today, it means there is a need in your life that you have brought to God. That step of faith is not small — it is everything.</p>
+                <p>WEBIC believes in a God who heals. Not a God who used to heal, or who heals some but not others. The same Jesus who healed the leper, the blind man, the woman with the issue of blood — He is the same yesterday, today, and forever (Hebrews 13:8). Your case is not too hard for Him.</p>
+                <p>Prophet Samson Ayorinde has ministered healing to thousands of people across Nigeria and beyond. At our Miracle Services held every Tuesday, the atmosphere is charged for supernatural intervention. We invite you to come — but even if you cannot come physically, your prayer request reaches the same God.</p>
+              </div>
+            </div>
+
+            <!-- Prayer Points -->
+            <div class="reveal">
+              <h2 style="font-family:var(--font-serif);font-size:1.6rem;margin-bottom:8px;color:var(--color-heading);" id="prayer-points-title">How We Pray With You</h2>
+              <p style="font-size:15px;color:var(--color-muted);line-height:1.7;margin-bottom:20px;" id="prayer-points-sub">Our intercessors cover these specific areas when they lift your name before the Lord.</p>
+              <ul class="prayer-points" id="prayer-points-list">
+                <!-- Filled by JS -->
+              </ul>
+            </div>
+
+            <!-- Testimony -->
+            <div class="reveal" id="testimony-section">
+              <h3 style="font-family:var(--font-serif);font-size:1.4rem;margin-bottom:16px;color:var(--color-heading);">A Testimony From This Category</h3>
+              <div class="testimony-detail">
+                <p class="testimony-detail__quote" id="testimony-quote">I had fibroid for six years and the doctors told me I needed surgery. I came to the WEBIC Miracle Service and Prophet Ayorinde prayed specifically for women with conditions in the womb. Three weeks later my scan came back completely clear. No surgery needed. Jesus did it — all glory to God!</p>
+                <div class="testimony-detail__author" id="testimony-author">Sister Ngozi Okafor — Healing</div>
+              </div>
+            </div>
+
+            <!-- Related categories -->
+            <div class="reveal">
+              <h3 style="font-size:15px;font-weight:600;color:var(--color-heading);margin-bottom:12px;">Also Seeking Prayer For</h3>
+              <div class="related-cats">
+                <a href="find-help-detail.html?category=fruitfulness" class="related-cat-link">🌿 Fruitfulness</a>
+                <a href="find-help-detail.html?category=breakthrough" class="related-cat-link">⚡ Breakthrough</a>
+                <a href="find-help-detail.html?category=deliverance" class="related-cat-link">🔓 Deliverance</a>
+                <a href="find-help-detail.html?category=marriage" class="related-cat-link">💑 Marriage</a>
+                <a href="find-help-detail.html?category=finances" class="related-cat-link">💼 Finances</a>
+                <a href="find-help-detail.html?category=grief" class="related-cat-link">🕊️ Grief &amp; Loss</a>
+                <a href="find-help-detail.html?category=guidance" class="related-cat-link">🧭 Guidance</a>
+                <a href="find-help-detail.html?category=salvation" class="related-cat-link">✝️ Salvation</a>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Sidebar Form -->
+          <div>
+            <div class="sidebar-form reveal">
+              <div class="sidebar-form__title" id="form-title">Pray for My Healing</div>
+              <p class="sidebar-form__sub">Fill in the form below. Our prayer team will intercede specifically for you today.</p>
+
+              <form id="detail-prayer-form" novalidate>
+                <div class="form-group" style="margin-bottom:14px;">
+                  <label class="form-label" for="dp-name">Your Name *</label>
+                  <input type="text" id="dp-name" class="form-control" placeholder="First name is fine" required />
+                </div>
+                <div class="form-group" style="margin-bottom:14px;">
+                  <label class="form-label" for="dp-phone">Phone / WhatsApp *</label>
+                  <input type="tel" id="dp-phone" class="form-control" placeholder="+234 800 000 0000" required />
+                </div>
+                <div class="form-group" style="margin-bottom:14px;">
+                  <label class="form-label" for="dp-email">Email (Optional)</label>
+                  <input type="email" id="dp-email" class="form-control" placeholder="your@email.com" />
+                </div>
+                <div class="form-group" style="margin-bottom:6px;">
+                  <label class="form-label" for="dp-request">Your Prayer Request *</label>
+                  <textarea id="dp-request" class="form-control" rows="5" maxlength="600" placeholder="Share what you'd like us to pray about. Be as specific as you like..." required></textarea>
+                </div>
+                <div class="char-counter"><span id="dp-char">0</span> / 600</div>
+
+                <div style="display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--color-muted);line-height:1.5;margin:16px 0;">
+                  <input type="checkbox" id="dp-private" style="width:15px;height:15px;margin-top:2px;accent-color:var(--color-primary);flex-shrink:0;" />
+                  <label for="dp-private">Keep my request private — only our lead intercessors will see this.</label>
+                </div>
+
+                <input type="hidden" id="dp-category" />
+
+                <button type="submit" class="btn btn--primary btn--lg" style="width:100%;" id="dp-submit">
+                  Send Prayer Request
+                </button>
+
+                <p style="font-size:12px;color:var(--color-muted);text-align:center;margin-top:14px;line-height:1.5;">
+                  Strictly confidential. Your details are never shared.
+                </p>
+              </form>
+            </div>
+
+            <!-- WhatsApp CTA -->
+            <div style="background:linear-gradient(135deg,#128C7E,#25D366);border-radius:16px;padding:24px;margin-top:20px;text-align:center;color:#fff;" class="reveal">
+              <div style="font-size:28px;margin-bottom:10px;">💬</div>
+              <div style="font-size:15px;font-weight:600;margin-bottom:6px;">Prefer to Message Us?</div>
+              <div style="font-size:13px;color:rgba(255,255,255,0.85);margin-bottom:16px;line-height:1.5;">Our prayer team is on WhatsApp. Send a message right now.</div>
+              <a href="https://wa.me/2348033127704" target="_blank" rel="noopener" style="display:inline-block;background:rgba(255,255,255,0.2);border:1.5px solid rgba(255,255,255,0.4);color:#fff;padding:10px 24px;border-radius:100px;font-size:14px;font-weight:600;text-decoration:none;">
+                Chat on WhatsApp
+              </a>
+            </div>
+
+            <!-- Miracle Service callout -->
+            <div style="background:var(--color-bg-alt);border-radius:16px;padding:24px;margin-top:20px;" class="reveal">
+              <div style="font-size:13px;font-weight:600;color:var(--color-primary);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:8px;">Every Tuesday</div>
+              <div style="font-family:var(--font-serif);font-size:1.2rem;color:var(--color-heading);margin-bottom:8px;">Attend the Miracle Service</div>
+              <div style="font-size:14px;color:var(--color-muted);line-height:1.65;margin-bottom:16px;">10:00am – 1:00pm at 51-53 Ogudu Road, Lagos. Prophet Ayorinde ministers and miracles happen every week.</div>
+              <a href="plan-visit.html" class="btn btn--secondary btn--sm" style="width:100%;text-align:center;">Plan My Visit</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Scripture Banner -->
+    <div class="scripture-banner">
+      <p class="scripture-banner__text" id="banner-verse">"Is anyone among you sick? Let them call the elders of the church to pray over them and anoint them with oil in the name of the Lord."</p>
+      <p class="scripture-banner__ref" id="banner-ref">James 5:14 (NIV)</p>
+    </div>
+
+    <!-- CTA -->
+    <section class="section section--warm" style="text-align:center;">
+      <div class="container reveal">
+        <div style="max-width:540px;margin:0 auto;">
+          <h2 style="margin-bottom:16px;">You Don't Have to Wait Alone</h2>
+          <p style="font-size:17px;color:var(--color-muted);line-height:1.7;margin-bottom:32px;">Come to a service. Submit a request. Call us. However you reach out, WEBIC's prayer community will stand with you until your answer comes.</p>
+          <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+            <a href="plan-visit.html" class="btn btn--primary btn--lg">Visit This Sunday</a>
+            <a href="find-help.html" class="btn btn--secondary btn--lg">More Prayer Categories</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="index.html" class="footer__logo">
+            <img src="../Logos/images.jpg" alt="WEBIC" class="footer__logo-img" />
+            <div><div class="footer__logo-name">WEBIC</div><div class="footer__logo-sub">World Evangelism Bible Church</div></div>
+          </a>
+          <p class="footer__tagline">Raising World Evangelists for the End Times.</p>
+          <div class="footer__service-times">
+            <div class="footer__service-time"><span>Sunday Services</span><span>8:00am &amp; 10:30am</span></div>
+            <div class="footer__service-time"><span>Miracle Service (Tuesday)</span><span>10:00am – 1:00pm</span></div>
+          </div>
+          <div class="footer__socials mt-6">
+            <a href="https://www.facebook.com/webicworldwide/" class="footer__social" target="_blank">f</a>
+            <a href="https://www.instagram.com/webicworldwide/" class="footer__social" target="_blank">in</a>
+            <a href="https://www.youtube.com/@webicworldwide" class="footer__social" target="_blank">yt</a>
+          </div>
+        </div>
+        <div><h4 class="footer__col-title">Explore</h4><ul class="footer__links"><li><a href="about.html" class="footer__link">About WEBIC</a></li><li><a href="beliefs.html" class="footer__link">Our Beliefs</a></li><li><a href="ministries.html" class="footer__link">Ministries</a></li><li><a href="sermons.html" class="footer__link">Sermons</a></li></ul></div>
+        <div><h4 class="footer__col-title">Connect</h4><ul class="footer__links"><li><a href="plan-visit.html" class="footer__link">Plan a Visit</a></li><li><a href="give.html" class="footer__link">Give Online</a></li><li><a href="contact.html" class="footer__link">Contact Us</a></li></ul></div>
+        <div><h4 class="footer__col-title">Find Us</h4><ul class="footer__links"><li><span class="footer__link" style="cursor:default;color:rgba(255,255,255,0.55);">51-53 Ogudu Road<br>Ogudu, Lagos, Nigeria</span></li><li style="margin-top:8px;"><a href="tel:+2348033127704" class="footer__link">+234 803 312 7704</a></li></ul></div>
+      </div>
+      <div class="footer__bottom"><p>© 2025 World Evangelism Bible Church (WEBIC). All rights reserved.</p></div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/2348033127704" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="white"/></svg>
+  </a>
+
+  <script src="js/main.js"></script>
+  <script>
+    // ─── Category Data ─────────────────────────────────────────────────────────
+    const categories = {
+      healing: {
+        emoji: '🙏',
+        label: 'Healing & Health',
+        title: 'Healing &amp; Health',
+        tagline: 'God is still the Healer. He bore your sickness on the cross and by His stripes you are healed.',
+        gradient: 'linear-gradient(135deg, #7B0000 0%, #CC1111 60%, #9B3333 100%)',
+        verse: '"But he was pierced for our transgressions, he was crushed for our iniquities; the punishment that brought us peace was on him, and by his wounds we are healed."',
+        verseRef: 'Isaiah 53:5 (NIV)',
+        encTitle: 'God Heals — Even Now',
+        encBody: `<p>If you are reading this page today, it means there is a need you have carried to God. That step of faith is not small — it is everything.</p>
+          <p>WEBIC believes in a God who heals. Not a God who used to heal, or who heals some but not others. The same Jesus who healed the leper, the blind man, the woman with the issue of blood — He is the same yesterday, today, and forever (Hebrews 13:8). Your case is not too hard for Him.</p>
+          <p>At our Miracle Services held every Tuesday, the atmosphere is charged for supernatural intervention. We invite you to come — but even if you cannot come physically, your prayer request reaches the same God.</p>`,
+        prayerPointsTitle: 'How We Pray For Your Healing',
+        prayerPointsSub: 'Our intercessors cover these specific areas when they lift your name before the Lord.',
+        prayerPoints: [
+          'We pray for the direct healing touch of Jesus over every area of the body that is afflicted.',
+          'We rebuke every spirit of infirmity and command sickness to leave in the name of Jesus.',
+          'We declare the blood of Jesus over your diagnosis and speak life into your situation.',
+          'We pray for peace of mind, strength, and comfort as you trust God through this season.',
+          'We ask God to direct the right doctors, medications, and breakthroughs in the natural realm.',
+          'We pray for complete restoration to full health — spirit, soul, and body.',
+        ],
+        formTitle: 'Pray For My Healing',
+        testimony: '"I had fibroid for six years and the doctors told me I needed surgery. I came to the WEBIC Miracle Service and Prophet Ayorinde prayed specifically for women with conditions in the womb. Three weeks later my scan came back completely clear. No surgery needed. Jesus did it — all glory to God!"',
+        testimonyAuthor: 'Sister Ngozi Okafor — Healing',
+        bannerVerse: '"Is anyone among you sick? Let them call the elders of the church to pray over them and anoint them with oil in the name of the Lord."',
+        bannerRef: 'James 5:14 (NIV)',
+      },
+      fruitfulness: {
+        emoji: '🌿',
+        label: 'Fruitfulness & Barrenness',
+        title: 'Fruitfulness &amp; Barrenness',
+        tagline: 'There is a word of the Lord for you. The God who opened Hannah\'s womb is the same God today.',
+        gradient: 'linear-gradient(135deg, #0A4A1A 0%, #1A7A3A 60%, #0D5C25 100%)',
+        verse: '"He maketh the barren woman to keep house, and to be a joyful mother of children. Praise ye the Lord."',
+        verseRef: 'Psalm 113:9 (KJV)',
+        encTitle: 'Your Womb Is Not Forgotten',
+        encBody: `<p>WEBIC has a strong and well-documented anointing for the fruit of the womb. Prophet Samson Ayorinde carries a mantle for fruitfulness — hundreds of families in Nigeria and beyond call him "Baba" because of the miracle of their children.</p>
+          <p>If you have been waiting on God for children — whether for months or for years — your waiting is not invisible to God. He sees every tear, every prayer, every negative result. And He is not done with your story.</p>
+          <p>We ask you to come to the Miracle Service and stand in faith with us. But start right now by submitting your name. Our intercessors will begin to pray today.</p>`,
+        prayerPointsTitle: 'How We Pray For Fruitfulness',
+        prayerPointsSub: 'Targeted, specific intercession for the fruit of the womb.',
+        prayerPoints: [
+          'We pray for every medical and biological hindrance to conception to be removed in Jesus\' name.',
+          'We declare the blessing of fruitfulness over your womb as God declared it in Genesis 1:28.',
+          'We come against every generational curse or pattern of barrenness in your family line.',
+          'We pray for healthy pregnancies, safe deliveries, and children that are a blessing and heritage from the Lord.',
+          'We pray for peace of mind and faith that does not waver as you wait on God.',
+          'We intercede for both husband and wife — that God would touch every area that needs His divine intervention.',
+        ],
+        formTitle: 'Pray For Fruitfulness',
+        testimony: '"My husband and I had been married for eleven years without children. We submitted our prayer request and attended the Anointing Fire Night. Prophet Ayorinde stopped mid-service and called out women who had been waiting over ten years. He prayed and gave a prophetic word. Nine months later our twins were born. We named them Emmanuel and Grace."',
+        testimonyAuthor: 'Mama Adaeze — Fruitfulness',
+        bannerVerse: '"For this child I prayed; and the Lord hath given me my petition which I asked of him."',
+        bannerRef: '1 Samuel 1:27 (KJV)',
+      },
+      breakthrough: {
+        emoji: '⚡',
+        label: 'Breakthrough & Open Doors',
+        title: 'Breakthrough &amp; Open Doors',
+        tagline: 'Every door the enemy has closed, God is able to open. Your season has come.',
+        gradient: 'linear-gradient(135deg, #0B1E4A 0%, #163580 60%, #1A3C8F 100%)',
+        verse: '"These are the words of him who is holy and true, who holds the key of David. What he opens no one can shut, and what he shuts no one can open."',
+        verseRef: 'Revelation 3:7 (NIV)',
+        encTitle: 'The God of Open Doors',
+        encBody: `<p>Have you been trying — in business, career, education, visa applications, ministry — and the door keeps closing? Have you done everything right and still nothing is moving? God is not blind to your situation.</p>
+          <p>At WEBIC we believe in supernatural breakthrough — moments where heaven intervenes in a situation that human effort alone cannot unlock. We have seen it happen over and over again in this church for 29 years.</p>
+          <p>Do not give up on the threshold of your miracle. Submit your request, come to a service, and let faith rise in your heart. Your breakthrough is closer than you think.</p>`,
+        prayerPointsTitle: 'How We Pray For Your Breakthrough',
+        prayerPointsSub: 'Intercession that targets open doors, favour, and divine connections.',
+        prayerPoints: [
+          'We pray for every closed door to be supernaturally opened by the hand of God.',
+          'We come against every principality or power that has stood as a wall in your life.',
+          'We pray for divine connections — the right people, at the right time, saying yes to you.',
+          'We declare uncommon favour over you in your workplace, business, and community.',
+          'We pray for divine acceleration — that what would take years happens in a season.',
+          'We ask God to give you clarity, strategy, and wisdom that opens doors from the inside.',
+        ],
+        formTitle: 'Pray For My Breakthrough',
+        testimony: '"I applied for a UK visa seven times and was refused each time. A member invited me to WEBIC and at the Miracle Service Prophet Ayorinde gave a word for people waiting on international doors. I applied the eighth time and was approved within 48 hours with a ten-year multiple-entry visa. God did it!"',
+        testimonyAuthor: 'Brother Emeka Eze — Breakthrough',
+        bannerVerse: '"Behold, I have set before thee an open door, and no man can shut it."',
+        bannerRef: 'Revelation 3:8 (KJV)',
+      },
+      deliverance: {
+        emoji: '🔓',
+        label: 'Deliverance & Freedom',
+        title: 'Deliverance &amp; Freedom',
+        tagline: 'Jesus came to set the captives free. Complete deliverance is your inheritance as a child of God.',
+        gradient: 'linear-gradient(135deg, #4A2A00 0%, #8B5E00 60%, #CC8800 100%)',
+        verse: '"The Spirit of the Lord is on me, because he has anointed me to proclaim freedom for the prisoners and recovery of sight for the blind, to set the oppressed free."',
+        verseRef: 'Luke 4:18 (NIV)',
+        encTitle: 'Freedom Is Your Portion',
+        encBody: `<p>Oppression, spiritual bondage, generational patterns, night terrors, recurring failures, and demonic harassment — these are real, but they do not have the final say. Jesus purchased your freedom on the cross and His name carries authority over every power of darkness.</p>
+          <p>At WEBIC we do not shy away from the ministry of deliverance. It is part of the full Gospel and Prophet Ayorinde ministers deliverance regularly at our services. We take spiritual warfare seriously and we know the One who is more powerful than the enemy.</p>
+          <p>Whatever has been holding you down — it can be broken. Submit your name and let our prayer team stand in the gap for your freedom today.</p>`,
+        prayerPointsTitle: 'How We Pray For Deliverance',
+        prayerPointsSub: 'Authoritative intercession over every form of spiritual bondage.',
+        prayerPoints: [
+          'We plead the blood of Jesus over your life and declare every legal ground of the enemy broken.',
+          'We command every spirit of oppression, fear, and torment to leave in Jesus\' name.',
+          'We pray for the breaking of every generational curse and inherited spiritual bondage.',
+          'We ask God to fill every area of your life from which the enemy is expelled with the Holy Spirit.',
+          'We pray for spiritual eyes to be opened and divine wisdom to walk in your freedom.',
+          'We declare that greater is He that is in you than he that is in the world (1 John 4:4).',
+        ],
+        formTitle: 'Pray For My Deliverance',
+        testimony: '"My son was deep in drug addiction for seven years and had broken our family apart. I submitted his name for prayer at WEBIC and began attending the Miracle Service. Two months later he called me weeping and asked to come home. Today he is serving in the children\'s ministry. Only God could have done this."',
+        testimonyAuthor: 'Mrs. Funmi Adeleke — Deliverance',
+        bannerVerse: '"If the Son therefore shall make you free, ye shall be free indeed."',
+        bannerRef: 'John 8:36 (KJV)',
+      },
+      marriage: {
+        emoji: '💑',
+        label: 'Marriage & Relationships',
+        title: 'Marriage &amp; Relationships',
+        tagline: 'God is the author of covenant. He can bring together what belongs together and restore what has been broken.',
+        gradient: 'linear-gradient(135deg, #5A0022 0%, #A0004A 60%, #CC0055 100%)',
+        verse: '"He who finds a wife finds what is good and receives favour from the Lord."',
+        verseRef: 'Proverbs 18:22 (NIV)',
+        encTitle: 'God Has Not Forgotten Your Desire',
+        encBody: `<p>Whether you are trusting God for a life partner, believing for restoration in a struggling marriage, or standing for healing in a broken relationship — God cares about your heart and your home.</p>
+          <p>WEBIC's Marriage and Family Ministry has ministered to hundreds of couples and singles across Lagos and beyond. We believe that what God has joined together, no man — and no enemy — can permanently separate when two people invite God back to the centre.</p>
+          <p>If you are single, your desire for a godly partner is not wrong — it is God-given. Submit your request and let the church pray with you. God's timing is perfect.</p>`,
+        prayerPointsTitle: 'How We Pray For Your Relationship',
+        prayerPointsSub: 'Intercession for singles, couples, and families.',
+        prayerPoints: [
+          'For singles: we pray that God divinely directs your steps to your God-ordained partner.',
+          'We pray for emotional healing and wholeness so you enter your relationship complete in Christ.',
+          'For couples: we pray for the restoration of love, trust, communication, and unity.',
+          'We come against every spirit of division, unforgiveness, and bitterness in your home.',
+          'We pray for supernatural wisdom for both partners to serve one another in love.',
+          'We declare that your home will be a testimony of what God can do in a covenant family.',
+        ],
+        formTitle: 'Pray For My Marriage',
+        testimony: '"My husband and I were on the verge of divorce after twelve years of marriage. A family member brought us to WEBIC and we attended a marriage seminar. We submitted our situation for prayer. Within three months our marriage was completely restored. We now serve in the Marriage Ministry to help other couples."',
+        testimonyAuthor: 'Mr. & Mrs. Babatunde Olaolu — Marriage Restoration',
+        bannerVerse: '"What therefore God hath joined together, let not man put asunder."',
+        bannerRef: 'Mark 10:9 (KJV)',
+      },
+      finances: {
+        emoji: '💼',
+        label: 'Financial Breakthrough',
+        title: 'Financial Breakthrough',
+        tagline: 'The God of more than enough is able to restore, multiply, and provide — beyond what you can ask or imagine.',
+        gradient: 'linear-gradient(135deg, #004A1A 0%, #007A2E 60%, #009A3A 100%)',
+        verse: '"And my God will meet all your needs according to the riches of his glory in Christ Jesus."',
+        verseRef: 'Philippians 4:19 (NIV)',
+        encTitle: 'God Knows Your Financial Need',
+        encBody: `<p>Debt, unemployment, business failure, stagnation, and financial lack are not your portion. God is Jehovah Jireh — the Lord who provides. The same God who multiplied five loaves and two fish to feed five thousand is the God we serve today.</p>
+          <p>At WEBIC we have seen God turn around financial situations that looked completely hopeless — businesses restored, debts cancelled, unexpected income, promotions that came from nowhere. This is not hype — it is testimony.</p>
+          <p>As you submit your request, also take a step in faith. Come to a Miracle Service. Honour God with what you have. And watch Him open the windows of heaven over your life.</p>`,
+        prayerPointsTitle: 'How We Pray For Financial Breakthrough',
+        prayerPointsSub: 'Targeted prayer for provision, restoration, and abundance.',
+        prayerPoints: [
+          'We pray against every devourer that has been consuming your finances (Malachi 3:11).',
+          'We declare the blessing of God that makes rich without adding sorrow (Proverbs 10:22).',
+          'We pray for the opening of supernatural channels of income and favour.',
+          'We rebuke every spirit of poverty, lack, and financial stagnation in your life.',
+          'We pray for wisdom, strategy, and divine ideas that create new streams of income.',
+          'We ask God to connect you with people who will be instruments of your breakthrough.',
+        ],
+        formTitle: 'Pray For Financial Breakthrough',
+        testimony: '"I was made redundant and went six months without income. I felt utterly hopeless. The church prayed with me and I kept attending Miracle Services. Within three months I received a job offer that paid three times my previous salary, plus a promotion I did not even apply for. God is not a man that He should lie."',
+        testimonyAuthor: 'Brother Tunde Fashola — Financial Breakthrough',
+        bannerVerse: '"Bring ye all the tithes into the storehouse... and prove me now herewith, saith the Lord of hosts, if I will not open you the windows of heaven."',
+        bannerRef: 'Malachi 3:10 (KJV)',
+      },
+      grief: {
+        emoji: '🕊️',
+        label: 'Grief & Loss',
+        title: 'Grief &amp; Loss',
+        tagline: 'God is close to the broken-hearted. You do not have to carry this weight alone.',
+        gradient: 'linear-gradient(135deg, #2A0050 0%, #5A1A8A 60%, #7A2AB0 100%)',
+        verse: '"The Lord is close to the broken-hearted and saves those who are crushed in spirit."',
+        verseRef: 'Psalm 34:18 (NIV)',
+        encTitle: 'You Are Not Alone in This',
+        encBody: `<p>The loss of someone you love, a broken relationship, a dream that did not come true, a miscarriage, a betrayal — grief is real and it is heavy. And God is not asking you to pretend it does not hurt.</p>
+          <p>What He is saying is: you do not have to carry this alone. He is the God of all comfort, who comforts us in all our troubles (2 Corinthians 1:3-4). He weeps with us before He heals us.</p>
+          <p>WEBIC's prayer team and pastoral counsellors are available to walk through this season with you. You are not a burden — you are the very reason this church exists. Submit your request and let us carry this with you.</p>`,
+        prayerPointsTitle: 'How We Pray With You in Grief',
+        prayerPointsSub: 'Compassionate intercession for those carrying loss.',
+        prayerPoints: [
+          'We pray for the comfort of the Holy Spirit to surround you like a warm blanket in this season.',
+          'We pray for supernatural peace that passes all understanding to guard your heart and mind.',
+          'We pray that God would take the weight of grief and replace it with His presence.',
+          'We pray for healing of emotional wounds — nothing is too deep for God to reach.',
+          'We pray for strength to face each day and wisdom to know you are not alone.',
+          'We ask God to bring His people around you — community, love, and tangible support.',
+        ],
+        formTitle: 'Pray With Me in My Grief',
+        testimony: '"I lost my husband of 28 years suddenly and I did not know how to go on. A neighbour brought me to WEBIC and the pastoral team visited me at home. They prayed with me week after week. God met me in the darkest place and gave me a peace I cannot explain. I am still here. I am healing. God is faithful."',
+        testimonyAuthor: 'Mrs. Patience Nwachukwu — Grief & Loss',
+        bannerVerse: '"He healeth the broken in heart, and bindeth up their wounds."',
+        bannerRef: 'Psalm 147:3 (KJV)',
+      },
+      salvation: {
+        emoji: '✝️',
+        label: 'Salvation for a Loved One',
+        title: 'Salvation for a Loved One',
+        tagline: 'God is not willing that any should perish. Your prayers for their soul are powerful and effective.',
+        gradient: 'linear-gradient(135deg, #6B4A00 0%, #B07A00 60%, #D4A520 100%)',
+        verse: '"The Lord is not slow in keeping his promise, as some understand slowness. Instead he is patient with you, not wanting anyone to perish, but everyone to come to repentance."',
+        verseRef: '2 Peter 3:9 (NIV)',
+        encTitle: 'Keep Praying — God Is Moving',
+        encBody: `<p>Do you have a parent, sibling, child, friend, or spouse who does not know Jesus? Your prayers for them are not falling on deaf ears. Every prayer you pray goes before God and He hears every single one.</p>
+          <p>We have seen God save people who everyone had given up on — hardened atheists, occult members, people who actively mocked the Gospel. When the right intercessor prays the right prayer in faith, heaven moves.</p>
+          <p>Do not stop praying for them. And let WEBIC's prayer community join you in agreement. There is power in corporate intercession — and together, we will stand until your loved one comes home.</p>`,
+        prayerPointsTitle: 'How We Pray For Their Salvation',
+        prayerPointsSub: 'Intercession that targets the heart, will, and spiritual blindness of the unsaved.',
+        prayerPoints: [
+          'We pray that the Holy Spirit would draw them with a love they cannot resist or explain.',
+          'We pray for scales to fall from their spiritual eyes and for them to see the truth of the Gospel.',
+          'We pray for divine appointments — that believers would cross their path at the right moment.',
+          'We bind every spirit that has kept them blinded or hardened to the Gospel.',
+          'We pray for you — the intercessor — to have faith, patience, and love that does not give up.',
+          'We declare that this person is coming into the Kingdom in Jesus\' name.',
+        ],
+        formTitle: 'Pray For Their Salvation',
+        testimony: '"My father was a staunch opponent of Christianity for 40 years. I submitted his name for prayer at WEBIC and fasted every Thursday for his soul. At age 72, he watched a WEBIC service online during his illness. He called me that night and gave his life to Jesus. He was baptised three weeks before he passed into glory."',
+        testimonyAuthor: 'Sister Kemi Adeyemi — Salvation',
+        bannerVerse: '"For whosoever shall call upon the name of the Lord shall be saved."',
+        bannerRef: 'Romans 10:13 (KJV)',
+      },
+      guidance: {
+        emoji: '🧭',
+        label: 'Direction & Guidance',
+        title: 'Direction &amp; Guidance',
+        tagline: 'God has a specific plan for your life. Seek His face and He will make your path clear.',
+        gradient: 'linear-gradient(135deg, #003A5A 0%, #006A9A 60%, #0088CC 100%)',
+        verse: '"Trust in the Lord with all your heart and lean not on your own understanding; in all your ways submit to him, and he will make your paths straight."',
+        verseRef: 'Proverbs 3:5-6 (NIV)',
+        encTitle: 'God Has a Plan — And He Will Show You',
+        encBody: `<p>Standing at a crossroads is one of the most unsettling places to be. Should you stay or go? Accept this offer or wait? Trust this person or pull back? Start the business or hold on? When we are facing big decisions, we need more than logic — we need God's voice.</p>
+          <p>At WEBIC we believe in a God who speaks. Through His Word, through the Holy Spirit, through prophecy, and through the counsel of godly people — He guides those who are genuinely seeking Him.</p>
+          <p>Prophet Ayorinde regularly ministers prophetically with specific, accurate words that bring clarity and direction to people\'s lives. Let us pray and seek God with you.</p>`,
+        prayerPointsTitle: 'How We Pray For Your Direction',
+        prayerPointsSub: 'Intercession for wisdom, clarity, and divine guidance.',
+        prayerPoints: [
+          'We pray for the Holy Spirit to speak clearly to your heart with unmistakable clarity.',
+          'We pray for dreams, visions, and impressions that confirm the will of God for your situation.',
+          'We ask God to close every wrong door firmly and open every right door wide.',
+          'We pray for godly counsel and wise people to come into your life at this critical moment.',
+          'We pray against the spirit of confusion, double-mindedness, and fear of making the wrong decision.',
+          'We declare that God has not given you a spirit of fear but of power, love, and a sound mind (2 Timothy 1:7).',
+        ],
+        formTitle: 'Pray For My Direction',
+        testimony: '"I had been offered two very different job positions and had prayed for weeks without clarity. At a WEBIC service Prophet Ayorinde gave a prophetic word about someone facing a choice between two paths — it described my exact situation. The word gave me complete peace about which direction to take. It turned out to be the best decision of my professional life."',
+        testimonyAuthor: 'Deacon Chukwuemeka Obi — Guidance',
+        bannerVerse: '"I will instruct thee and teach thee in the way which thou shalt go: I will guide thee with mine eye."',
+        bannerRef: 'Psalm 32:8 (KJV)',
+      },
+    };
+
+    // ─── Read URL param & hydrate page ────────────────────────────────────────
+    function getParam(name) {
+      return new URLSearchParams(window.location.search).get(name);
+    }
+
+    function setHTML(id, html) {
+      const el = document.getElementById(id);
+      if (el) el.innerHTML = html;
+    }
+    function setText(id, text) {
+      const el = document.getElementById(id);
+      if (el) el.textContent = text;
+    }
+
+    (function hydrate() {
+      const key = getParam('category') || 'healing';
+      const c = categories[key] || categories.healing;
+
+      // Hero
+      setText('hero-emoji', c.emoji);
+      setHTML('hero-label', c.label);
+      setHTML('hero-title', c.title);
+      setText('hero-tagline', c.tagline);
+      document.getElementById('detail-hero').style.background = c.gradient;
+
+      // Breadcrumb & meta
+      setText('breadcrumb-label', c.label);
+      document.title = c.label + ' — WEBIC Lagos';
+
+      // Promise
+      setHTML('promise-verse', c.verse);
+      setText('promise-ref', c.verseRef);
+
+      // Encouragement
+      setText('enc-title', c.encTitle);
+      setHTML('enc-body', c.encBody);
+
+      // Prayer points
+      setText('prayer-points-title', c.prayerPointsTitle);
+      setText('prayer-points-sub', c.prayerPointsSub);
+      const list = document.getElementById('prayer-points-list');
+      if (list) {
+        list.innerHTML = c.prayerPoints.map((pt, i) =>
+          `<li><div class="prayer-points__num">${i + 1}</div><span>${pt}</span></li>`
+        ).join('');
+      }
+
+      // Form
+      setHTML('form-title', c.formTitle);
+      const catInput = document.getElementById('dp-category');
+      if (catInput) catInput.value = key;
+
+      // Testimony
+      setText('testimony-quote', c.testimony);
+      setText('testimony-author', c.testimonyAuthor);
+
+      // Banner
+      setHTML('banner-verse', '&ldquo;' + c.bannerVerse.replace(/^[""]|[""]$/g,'') + '&rdquo;');
+      setText('banner-ref', c.bannerRef);
+
+      // Hide current category from related cats
+      document.querySelectorAll('.related-cat-link').forEach(link => {
+        const url = new URL(link.href);
+        if (url.searchParams.get('category') === key) {
+          link.style.display = 'none';
+        }
+      });
+    })();
+
+    // ─── Char counter ──────────────────────────────────────────────────────────
+    const dpRequest = document.getElementById('dp-request');
+    const dpChar    = document.getElementById('dp-char');
+    if (dpRequest && dpChar) {
+      dpRequest.addEventListener('input', () => { dpChar.textContent = dpRequest.value.length; });
+    }
+
+    // ─── Form submit ───────────────────────────────────────────────────────────
+    const detailForm = document.getElementById('detail-prayer-form');
+    if (detailForm) {
+      detailForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = document.getElementById('dp-name').value.trim();
+        const phone = document.getElementById('dp-phone').value.trim();
+        const req = document.getElementById('dp-request').value.trim();
+        if (!name || !phone || !req) {
+          alert('Please fill in your name, phone number, and prayer request.');
+          return;
+        }
+        const btn = document.getElementById('dp-submit');
+        btn.textContent = 'Request Sent ✓';
+        btn.disabled = true;
+        btn.style.background = '#16a34a';
+        setTimeout(() => {
+          detailForm.reset();
+          dpChar.textContent = '0';
+          btn.textContent = 'Send Prayer Request';
+          btn.disabled = false;
+          btn.style.background = '';
+        }, 5000);
+      });
+    }
+  </script>
+</body>
+</html>

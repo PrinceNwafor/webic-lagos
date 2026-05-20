@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Give to World Evangelism Bible Church (WEBIC) Lagos — partner with God's work of evangelism, healing, and transformation." />
+  <title>Give — WEBIC Lagos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .freq-btn {
+      padding: 10px 24px;
+      border-radius: 9999px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      border: 2px solid var(--color-border);
+      background: white;
+      color: var(--color-text-soft);
+      transition: all 250ms ease;
+    }
+    .freq-btn--active,
+    .freq-btn:hover {
+      background: var(--color-primary);
+      color: white;
+      border-color: var(--color-primary);
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav" id="main-nav" data-transparent="true" style="background:transparent;">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <img src="../Logos/images.jpg" alt="WEBIC Logo" class="nav__logo-img" />
+        <div><div class="nav__logo-text">WEBIC</div><div class="nav__logo-sub">World Evangelism Bible Church</div></div>
+      </a>
+      <ul class="nav__links">
+        <li><a href="about.html" class="nav__link">About</a></li>
+        <li><a href="sermons.html" class="nav__link">Sermons</a></li>
+        <li><a href="ministries.html" class="nav__link">Ministries</a></li>
+        <li><a href="events.html" class="nav__link">Events</a></li>
+        <li><a href="find-help.html" class="nav__link nav__link--find-help">Prayer</a></li>
+        <li><a href="contact.html" class="nav__link">Contact</a></li>
+      </ul>
+      <div class="nav__actions">
+        <a href="give.html" class="btn btn--primary btn--sm">Give</a>
+        <a href="plan-visit.html" class="btn btn--secondary btn--sm">Plan a Visit</a>
+        <button class="nav__menu-btn" id="menu-btn"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+  <div class="mobile-nav" id="mobile-nav">
+    <button class="mobile-nav__close" id="mobile-nav-close">✕</button>
+    <ul class="mobile-nav__links">
+      <li><a href="index.html" class="mobile-nav__link">Home</a></li>
+      <li><a href="about.html" class="mobile-nav__link">About</a></li>
+      <li><a href="sermons.html" class="mobile-nav__link">Sermons</a></li>
+      <li><a href="ministries.html" class="mobile-nav__link">Ministries</a></li>
+      <li><a href="events.html" class="mobile-nav__link">Events</a></li>
+      <li><a href="find-help.html" class="mobile-nav__link mobile-nav__link--find-help">Prayer Support</a></li>
+      <li><a href="plan-visit.html" class="mobile-nav__link">Plan a Visit</a></li>
+      <li><a href="give.html" class="mobile-nav__link">Give</a></li>
+      <li><a href="contact.html" class="mobile-nav__link">Contact</a></li>
+    </ul>
+  </div>
+
+  <main>
+
+    <div class="page-hero">
+      <span class="page-hero__label">Generosity</span>
+      <h1 class="page-hero__title">Give to WEBIC</h1>
+      <p class="page-hero__subtitle">Every seed you sow is a soul reached, a life transformed, and a miracle released. Partner with us in world evangelism.</p>
+    </div>
+
+    <!-- Why Give -->
+    <section class="section section--warm" id="why">
+      <div class="container">
+        <div class="grid grid-3 reveal" style="gap:28px;">
+          <div style="background:white; border-radius:var(--radius-xl); padding:36px; box-shadow:var(--shadow-sm); border:1px solid var(--color-border-light); text-align:center;">
+            <div style="font-size:40px; margin-bottom:16px;">🌍</div>
+            <h4 style="margin-bottom:12px; font-size:20px;">World Evangelism</h4>
+            <p style="color:var(--color-muted); font-size:15px; line-height:1.7;">Your giving funds Gospel crusades, evangelism teams, and outreaches that take the Word of God to cities, villages, and nations.</p>
+          </div>
+          <div style="background:var(--color-primary); border-radius:var(--radius-xl); padding:36px; text-align:center;">
+            <div style="font-size:40px; margin-bottom:16px;">✨</div>
+            <h4 style="color:white; margin-bottom:12px; font-size:20px;">Miracle Services</h4>
+            <p style="color:rgba(255,255,255,0.70); font-size:15px; line-height:1.7;">Your generosity keeps the Miracle Services running — where thousands receive healing, deliverance, and divine turnaround every week.</p>
+          </div>
+          <div style="background:white; border-radius:var(--radius-xl); padding:36px; box-shadow:var(--shadow-sm); border:1px solid var(--color-border-light); text-align:center;">
+            <div style="font-size:40px; margin-bottom:16px;">🏫</div>
+            <h4 style="margin-bottom:12px; font-size:20px;">Community Impact</h4>
+            <p style="color:var(--color-muted); font-size:15px; line-height:1.7;">WEBIC runs empowerment programs, supports the needy in Ogudu and beyond, and invests in the next generation through youth and campus ministry.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Give Online -->
+    <section class="section">
+      <div class="container">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start;" class="reveal">
+
+          <div>
+            <span class="section-header__label">Give Online</span>
+            <h2 style="margin-bottom:20px;">Sow Your Seed<br>Securely Online</h2>
+            <p style="color:var(--color-muted); line-height:1.8; margin-bottom:32px;">
+              Your offering, tithes, firstfruits, or special seed can be sown securely.
+              Every amount is a faith step and a partnership with God's work at WEBIC.
+            </p>
+
+            <!-- Frequency -->
+            <div style="margin-bottom:24px;">
+              <p style="font-size:14px; font-weight:600; color:var(--color-text); margin-bottom:12px;">Giving Frequency</p>
+              <div style="display:flex; gap:8px;">
+                <button class="freq-btn freq-btn--active">One-Time</button>
+                <button class="freq-btn">Monthly</button>
+                <button class="freq-btn">Weekly</button>
+              </div>
+            </div>
+
+            <!-- Amount buttons -->
+            <div style="margin-bottom:20px;">
+              <p style="font-size:14px; font-weight:600; color:var(--color-text); margin-bottom:12px;">Select Amount (₦)</p>
+              <div class="giving-options">
+                <div class="giving-amount" data-amount="1000">
+                  <div class="giving-amount__value">₦1k</div>
+                  <div class="giving-amount__label">Seed</div>
+                </div>
+                <div class="giving-amount" data-amount="5000">
+                  <div class="giving-amount__value">₦5k</div>
+                  <div class="giving-amount__label">Offering</div>
+                </div>
+                <div class="giving-amount" data-amount="10000">
+                  <div class="giving-amount__value">₦10k</div>
+                  <div class="giving-amount__label">Tithe</div>
+                </div>
+                <div class="giving-amount" data-amount="custom">
+                  <div class="giving-amount__value">Other</div>
+                  <div class="giving-amount__label">Custom</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="custom-amount">Amount (₦)</label>
+                <input type="number" id="custom-amount" class="form-input" placeholder="Enter amount in Naira" />
+              </div>
+            </div>
+
+            <!-- Giving Type -->
+            <div class="form-group">
+              <label class="form-label">Giving Category</label>
+              <select class="form-select">
+                <option>Tithes</option>
+                <option>Offering</option>
+                <option>Firstfruits</option>
+                <option>Missions &amp; Evangelism</option>
+                <option>Building Fund</option>
+                <option>Mantle Conference Fund</option>
+                <option>Welfare/Benevolence</option>
+              </select>
+            </div>
+
+            <a href="#bank-transfer" class="btn btn--primary btn--full btn--lg" style="margin-top:8px;">
+              Proceed to Give →
+            </a>
+          </div>
+
+          <!-- Bank Transfer Details -->
+          <div id="bank-transfer">
+            <span class="section-header__label">Bank Transfer</span>
+            <h3 style="margin-bottom:20px;">Direct Bank Payment</h3>
+            <p style="color:var(--color-muted); line-height:1.8; margin-bottom:28px;">
+              You can also make your offering directly via bank transfer to any of the accounts below.
+              Please use your name and giving category as the payment reference.
+            </p>
+
+            <div style="display:flex; flex-direction:column; gap:16px;">
+
+              <div style="background:var(--color-warm); border-radius:var(--radius-lg); padding:24px; border:1px solid var(--color-border-light);">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                  <span style="font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--color-accent);">First Bank of Nigeria</span>
+                  <span class="badge badge--primary">Tithes &amp; Offerings</span>
+                </div>
+                <div style="font-family:'Playfair Display',serif; font-size:24px; font-weight:700; color:var(--color-primary); letter-spacing:2px; margin-bottom:4px;">3079 XXXX XX</div>
+                <div style="font-size:14px; color:var(--color-muted);">Account Name: World Evangelism Bible Church</div>
+              </div>
+
+              <div style="background:var(--color-warm); border-radius:var(--radius-lg); padding:24px; border:1px solid var(--color-border-light);">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                  <span style="font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--color-accent);">GTBank (Guaranty Trust Bank)</span>
+                  <span class="badge badge--primary">Missions &amp; Evangelism</span>
+                </div>
+                <div style="font-family:'Playfair Display',serif; font-size:24px; font-weight:700; color:var(--color-primary); letter-spacing:2px; margin-bottom:4px;">0128 XXXX XX</div>
+                <div style="font-size:14px; color:var(--color-muted);">Account Name: WEBIC Missions Fund</div>
+              </div>
+
+            </div>
+
+            <div style="margin-top:24px; padding:20px; background:var(--color-accent-subtle); border-radius:var(--radius-lg); border-left:4px solid var(--color-accent);">
+              <p style="font-size:14px; color:var(--color-text-soft); line-height:1.7; margin:0;">
+                <strong>Note:</strong> Please contact the church office at <a href="tel:+2348033127704" style="color:var(--color-accent); font-weight:600;">+234 803 312 7704</a>
+                after your transfer for confirmation, or send proof of payment via WhatsApp.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Scripture -->
+    <div class="scripture-banner">
+      <p class="scripture-banner__text">"Give, and it shall be given unto you — good measure, pressed down, and shaken together, and running over."</p>
+      <p class="scripture-banner__ref">Luke 6:38 (KJV)</p>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="index.html" class="footer__logo">
+            <img src="../Logos/images.jpg" alt="WEBIC" class="footer__logo-img" />
+            <div><div class="footer__logo-name">WEBIC</div><div class="footer__logo-sub">World Evangelism Bible Church</div></div>
+          </a>
+          <p class="footer__tagline">Raising World Evangelists for the End Times.</p>
+          <div class="footer__service-times">
+            <div class="footer__service-time"><span>Sunday Services</span><span>8:00am &amp; 10:30am</span></div>
+            <div class="footer__service-time"><span>Miracle Service (Tuesday)</span><span>10:00am – 1:00pm</span></div>
+          </div>
+          <div class="footer__socials mt-6">
+            <a href="https://www.facebook.com/webicworldwide/" class="footer__social" target="_blank">f</a>
+            <a href="https://www.instagram.com/webicworldwide/" class="footer__social" target="_blank">in</a>
+            <a href="https://www.youtube.com/@webicworldwide" class="footer__social" target="_blank">yt</a>
+          </div>
+        </div>
+        <div><h4 class="footer__col-title">Explore</h4><ul class="footer__links"><li><a href="about.html" class="footer__link">About WEBIC</a></li><li><a href="ministries.html" class="footer__link">Ministries</a></li><li><a href="sermons.html" class="footer__link">Sermons</a></li></ul></div>
+        <div><h4 class="footer__col-title">Connect</h4><ul class="footer__links"><li><a href="plan-visit.html" class="footer__link">Plan a Visit</a></li><li><a href="contact.html#prayer" class="footer__link">Prayer Request</a></li><li><a href="contact.html" class="footer__link">Contact Us</a></li></ul></div>
+        <div><h4 class="footer__col-title">Find Us</h4><ul class="footer__links"><li><span class="footer__link" style="cursor:default;color:rgba(255,255,255,0.55);">51-53 Ogudu Road<br>Ogudu, Lagos, Nigeria</span></li><li style="margin-top:8px;"><a href="tel:+2348033127704" class="footer__link">+234 803 312 7704</a></li></ul></div>
+      </div>
+      <div class="footer__bottom"><p>© 2025 World Evangelism Bible Church (WEBIC). All rights reserved.</p></div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/2348033127704" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="white"/></svg>
+  </a>
+  <script src="js/main.js"></script>
+</body>
+</html>

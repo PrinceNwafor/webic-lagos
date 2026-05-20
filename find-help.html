@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Need prayer or help? WEBIC Lagos stands with you. Bring your prayer needs for healing, fruitfulness, breakthrough, deliverance, and more — God still answers prayer." />
+  <title>Prayer &amp; Support — WEBIC Lagos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .help-hero {
+      background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 50%, var(--color-accent) 100%);
+      padding: 120px 0 80px;
+      text-align: center;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .help-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+    }
+    .help-hero__label {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 100px;
+      padding: 6px 18px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 20px;
+    }
+    .help-hero__title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      color: #fff;
+      margin: 0 0 20px;
+      line-height: 1.15;
+    }
+    .help-hero__subtitle {
+      font-size: 18px;
+      color: rgba(255,255,255,0.85);
+      max-width: 600px;
+      margin: 0 auto 36px;
+      line-height: 1.7;
+    }
+    .help-hero__actions {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .help-hero__scroll {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.8);
+      padding: 10px 22px;
+      border-radius: 100px;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .help-hero__scroll:hover { background: rgba(255,255,255,0.2); color: #fff; }
+
+    /* Need Categories */
+    .need-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .need-card {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      border: 1px solid rgba(0,0,0,0.07);
+      transition: transform 0.25s, box-shadow 0.25s;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+    }
+    .need-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(22,53,128,0.14); }
+    .need-card__icon-wrap {
+      height: 110px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+    }
+    .need-card__body { padding: 20px 24px 28px; flex: 1; display: flex; flex-direction: column; }
+    .need-card__title {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      color: var(--color-heading);
+      margin: 0 0 10px;
+    }
+    .need-card__desc {
+      font-size: 14.5px;
+      color: var(--color-muted);
+      line-height: 1.7;
+      flex: 1;
+      margin: 0 0 18px;
+    }
+    .need-card__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-primary);
+      text-decoration: none;
+    }
+    .need-card__cta svg { width: 16px; height: 16px; transition: transform 0.2s; }
+    .need-card:hover .need-card__cta svg { transform: translateX(4px); }
+
+    /* Category color accents */
+    .need-card--healing .need-card__icon-wrap { background: linear-gradient(135deg, #FDE8E8, #F9C0C0); }
+    .need-card--fruitfulness .need-card__icon-wrap { background: linear-gradient(135deg, #E8F4E8, #B8E0B8); }
+    .need-card--breakthrough .need-card__icon-wrap { background: linear-gradient(135deg, #E8EFFE, #B8CCFA); }
+    .need-card--deliverance .need-card__icon-wrap { background: linear-gradient(135deg, #FFF4E0, #FFE0A0); }
+    .need-card--grief .need-card__icon-wrap { background: linear-gradient(135deg, #F0E8FF, #D5C0F5); }
+    .need-card--marriage .need-card__icon-wrap { background: linear-gradient(135deg, #FFE8F4, #FFBCD9); }
+    .need-card--finances .need-card__icon-wrap { background: linear-gradient(135deg, #E8FFF4, #A0EEC8); }
+    .need-card--salvation .need-card__icon-wrap { background: linear-gradient(135deg, #FFF8E0, #FFE8A0); }
+    .need-card--guidance .need-card__icon-wrap { background: linear-gradient(135deg, #E0F8FF, #A0DCFF); }
+
+    /* Testimony strip */
+    .testimony-strip {
+      background: var(--color-primary);
+      padding: 60px 0;
+      overflow: hidden;
+    }
+    .testimony-strip__inner {
+      display: flex;
+      gap: 32px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding: 0 24px;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .testimony-strip__inner::-webkit-scrollbar { display: none; }
+    .testimony-card {
+      min-width: 300px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 14px;
+      padding: 28px;
+      scroll-snap-align: start;
+      flex-shrink: 0;
+    }
+    .testimony-card__quote {
+      font-size: 15px;
+      color: rgba(255,255,255,0.9);
+      line-height: 1.7;
+      margin: 0 0 16px;
+      font-style: italic;
+    }
+    .testimony-card__name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-gold-light);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .testimony-card__need {
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      margin-top: 2px;
+    }
+
+    /* Prayer request form */
+    .prayer-section {
+      background: var(--color-bg-alt);
+    }
+    .prayer-form-card {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 4px 30px rgba(22,53,128,0.1);
+      padding: 48px;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .prayer-form-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.7rem;
+      color: var(--color-heading);
+      margin: 0 0 8px;
+    }
+    .prayer-form-card > p {
+      font-size: 15px;
+      color: var(--color-muted);
+      line-height: 1.7;
+      margin: 0 0 32px;
+    }
+    .prayer-category-select {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .prayer-cat-btn {
+      border: 2px solid #e5e7eb;
+      background: #fff;
+      border-radius: 10px;
+      padding: 12px 8px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--color-muted);
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+    .prayer-cat-btn span:first-child { font-size: 20px; }
+    .prayer-cat-btn:hover,
+    .prayer-cat-btn.active {
+      border-color: var(--color-primary);
+      background: var(--color-primary);
+      color: #fff;
+    }
+    .char-counter { font-size: 12px; color: var(--color-muted); text-align: right; margin-top: 4px; }
+    .prayer-privacy {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13.5px;
+      color: var(--color-muted);
+      line-height: 1.5;
+      margin-bottom: 24px;
+    }
+    .prayer-privacy input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      margin-top: 2px;
+      accent-color: var(--color-primary);
+      flex-shrink: 0;
+    }
+
+    /* Crisis/urgent line */
+    .crisis-bar {
+      background: linear-gradient(90deg, var(--color-accent) 0%, #A50000 100%);
+      padding: 20px 0;
+    }
+    .crisis-bar__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .crisis-bar__text {
+      color: #fff;
+      font-size: 15px;
+      font-weight: 500;
+    }
+    .crisis-bar__text strong { font-weight: 700; }
+    .crisis-bar__phone {
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.35);
+      color: #fff;
+      padding: 10px 22px;
+      border-radius: 100px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .crisis-bar__phone:hover { background: rgba(255,255,255,0.3); }
+
+    /* How it works */
+    .how-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 32px;
+      counter-reset: steps;
+    }
+    .how-step {
+      text-align: center;
+      counter-increment: steps;
+      position: relative;
+    }
+    .how-step__num {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--color-primary);
+      color: #fff;
+      font-size: 22px;
+      font-weight: 700;
+      font-family: var(--font-serif);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px;
+    }
+    .how-step__title {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--color-heading);
+      margin-bottom: 8px;
+    }
+    .how-step__desc { font-size: 14px; color: var(--color-muted); line-height: 1.65; }
+
+    @media (max-width: 768px) {
+      .help-hero { padding: 100px 20px 60px; }
+      .prayer-form-card { padding: 28px 20px; }
+      .prayer-category-select { grid-template-columns: repeat(2, 1fr); }
+      .crisis-bar__inner { flex-direction: column; text-align: center; }
+    }
+    @media (max-width: 480px) {
+      .need-grid { grid-template-columns: 1fr; }
+      .prayer-category-select { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav" id="main-nav" data-transparent="true" style="background:transparent;">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <img src="../Logos/images.jpg" alt="WEBIC Logo" class="nav__logo-img" />
+        <div><div class="nav__logo-text">WEBIC</div><div class="nav__logo-sub">World Evangelism Bible Church</div></div>
+      </a>
+      <ul class="nav__links">
+        <li><a href="about.html" class="nav__link">About</a></li>
+        <li><a href="sermons.html" class="nav__link">Sermons</a></li>
+        <li><a href="ministries.html" class="nav__link">Ministries</a></li>
+        <li><a href="events.html" class="nav__link">Events</a></li>
+        <li><a href="find-help.html" class="nav__link nav__link--find-help">Prayer</a></li>
+        <li><a href="contact.html" class="nav__link">Contact</a></li>
+      </ul>
+      <div class="nav__actions">
+        <a href="give.html" class="btn btn--ghost btn--sm">Give</a>
+        <a href="plan-visit.html" class="btn btn--primary btn--sm">Plan a Visit</a>
+        <button class="nav__menu-btn" id="menu-btn"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+  <div class="mobile-nav" id="mobile-nav">
+    <button class="mobile-nav__close" id="mobile-nav-close">✕</button>
+    <ul class="mobile-nav__links">
+      <li><a href="index.html" class="mobile-nav__link">Home</a></li>
+      <li><a href="about.html" class="mobile-nav__link">About</a></li>
+      <li><a href="sermons.html" class="mobile-nav__link">Sermons</a></li>
+      <li><a href="ministries.html" class="mobile-nav__link">Ministries</a></li>
+      <li><a href="events.html" class="mobile-nav__link">Events</a></li>
+      <li><a href="find-help.html" class="mobile-nav__link mobile-nav__link--find-help">Prayer Support</a></li>
+      <li><a href="plan-visit.html" class="mobile-nav__link">Plan a Visit</a></li>
+      <li><a href="give.html" class="mobile-nav__link">Give</a></li>
+      <li><a href="contact.html" class="mobile-nav__link">Contact</a></li>
+    </ul>
+  </div>
+
+  <main>
+
+    <!-- Hero -->
+    <div class="help-hero">
+      <div class="container" style="position:relative;z-index:1;">
+        <span class="help-hero__label">You Are Not Alone</span>
+        <h1 class="help-hero__title">God Hears Your Prayer.<br>We Are Here With You.</h1>
+        <p class="help-hero__subtitle">Whatever you are carrying today — sickness, barrenness, financial pressure, grief, or spiritual battle — bring it before God with us. WEBIC's prayer team stands in the gap for you.</p>
+        <div class="help-hero__actions">
+          <a href="#prayer-request" class="btn btn--primary btn--lg">Submit a Prayer Request</a>
+          <a href="#prayer-needs" class="help-hero__scroll">
+            Browse Prayer Categories
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Urgent Crisis Bar -->
+    <div class="crisis-bar">
+      <div class="container">
+        <div class="crisis-bar__inner">
+          <p class="crisis-bar__text"><strong>Need urgent prayer right now?</strong> Our prayer lines are open. Call or WhatsApp us directly.</p>
+          <a href="tel:+2348033127704" class="crisis-bar__phone">+234 803 312 7704</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- How It Works -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-header__label">Our Prayer Process</span>
+          <h2>How We Pray With You</h2>
+          <p style="font-size:17px; color:var(--color-muted); line-height:1.8; margin-top:12px;">
+            Every prayer request that comes to WEBIC is taken seriously. Here is what happens when you reach out.
+          </p>
+        </div>
+        <div class="how-steps reveal">
+          <div class="how-step">
+            <div class="how-step__num">1</div>
+            <div class="how-step__title">You Submit Your Request</div>
+            <div class="how-step__desc">Use the form below, WhatsApp, or call us directly. Share as much or as little as you are comfortable with.</div>
+          </div>
+          <div class="how-step">
+            <div class="how-step__num">2</div>
+            <div class="how-step__title">Our Prayer Team Intercedes</div>
+            <div class="how-step__desc">Trained intercessors pray over your request — individually, not just in bulk. Your name is lifted before God.</div>
+          </div>
+          <div class="how-step">
+            <div class="how-step__num">3</div>
+            <div class="how-step__title">Prophet Ayorinde Is Informed</div>
+            <div class="how-step__desc">Special requests are brought to the attention of our General Overseer for prophetic intercession and counsel.</div>
+          </div>
+          <div class="how-step">
+            <div class="how-step__num">4</div>
+            <div class="how-step__title">We Follow Up With You</div>
+            <div class="how-step__desc">We check back to stand in faith with you and celebrate when your miracle comes through — because it will.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Need Categories -->
+    <section class="section section--warm" id="prayer-needs">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-header__label">Prayer Categories</span>
+          <h2>What Do You Need Prayer For?</h2>
+          <p style="font-size:17px; color:var(--color-muted); line-height:1.8; margin-top:12px;">
+            God specialises in impossible situations. Choose the area where you need His touch today.
+          </p>
+        </div>
+
+        <div class="need-grid reveal">
+
+          <a href="find-help-detail.html?category=healing" class="need-card need-card--healing">
+            <div class="need-card__icon-wrap">🙏</div>
+            <div class="need-card__body">
+              <div class="need-card__title">Healing &amp; Health</div>
+              <div class="need-card__desc">Whether it is a chronic illness, a sudden diagnosis, or a loved one on a hospital bed — Jesus still heals. He bore our sicknesses on the cross and by His stripes we are healed (Isaiah 53:5).</div>
+              <span class="need-card__cta">
+                Pray for Healing
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </span>
+            </div>
+          </a>
+
+          <a href="find-help-detail.html?category=fruitfulness" class="need-card need-card--fruitfulness">
+            <div class="need-card__icon-wrap">🌿</div>
+            <div class="need-card__body">
+              <div class="need-card__title">Fruitfulness &amp; Barrenness</div>
+              <div class="need-card__desc">WEBIC has a strong anointing for the fruit of the womb. Prophet Ayorinde has ministered to thousands who are now parents. If you have been waiting on God for children, there is a word for you here.</div>
+              <span class="need-card__cta">
+                Pray for Fruitfulness
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </span>
+            </div>
+          </a>
+
+          <a href="find-help-detail.html?category=breakthrough" class="need-card need-card--breakthrough">
+            <div class="need-card__icon-wrap">⚡</div>
+            <div class="need-card__body">
+              <div class="need-card__title">Breakthrough &amp; Open Doors</div>
+              <div class="need-card__desc">Are you stuck? Has favour eluded you in business, career, education, or ministry? God is able to open doors that no man can shut. Your season of breakthrough is here.</div>
+              <span class="need-card__cta">
+                Pray for Breakthrough
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </span>
+            </div>
+          </a>
+
+          <a href="find-help-detail.html?category=deliverance" class="need-card need-card--deliverance">
+            <div class="need-card__icon-wrap">🔓</div>
+            <div class="need-card__body">
+              <div class="need-card__title">Deliverance &amp; Freedom</div>
+              <div class="need-card__desc">Oppression, spiritual bondage, generational patterns, and demonic harassment do not have the final say. Jesus came to set the captives free, and at WEBIC we believe in complete deliverance through His name.</div>
+              <span class="need-card__cta">
+                Pray for Deliverance
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </span>
+            </div>
+          </a>
+
+          <a href="find-help-detail.html?category=marriage" class="need-card need-card--marriage">
+            <div class="need-card__icon-wrap">💑</div>
+            <div class="need-card__body">
+              <div class="need-card__title">Marriage &amp; Relationships</div>
+              <div class="need-card__desc">Are you trusting God for a life partner? Is your marriage going through a difficult season? God is the author of covenant and He can restore, heal, and bring together what belongs together.</div>
+              <span class="need-card__cta">
+                Pray for Marriage
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </span>
+            </div>
+          </a>
+
+          <a href="find-help-detail.html?category=finances" class="need-card need-card--finances">
+            <div class="need-card__icon-wrap">💼</div>
+            <div class="need-card__body">
+              <div class="need-card__title">Financial Breakthrough</div>
+              <div class="need-card__desc">Debt, unemployment, business failure, and financial lack are not your portion. The God of more than enough is able to make all grace abound toward you so that you have everything you need (2 Corinthians 9:8).</div>
+              <span class="need-card__cta">
+                Pray for Provision
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </span>
+            </div>
+          </a>
+
+          <a href="find-help-detail.html?category=grief" class="need-card need-card--grief">
+            <div class="need-card__icon-wrap">🕊️</div>
+            <div class="need-card__body">
+              <div class="need-card__title">Grief &amp; Loss</div>
+              <div class="need-card__desc">The loss of a loved one, a broken relationship, or a shattered dream can feel unbearable. God is close to the broken-hearted and saves those who are crushed in spirit (Psalm 34:18). You do not have to grieve alone.</div>
+              <span class="need-card__cta">
+                Find Comfort
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </span>
+            </div>
+          </a>
+
+          <a href="find-help-detail.html?category=salvation" class="need-card need-card--salvation">
+            <div class="need-card__icon-wrap">✝️</div>
+            <div class="need-card__body">
+              <div class="need-card__title">Salvation for a Loved One</div>
+              <div class="need-card__desc">Do you have a family member, friend, or colleague who does not know Jesus? The Lord is not willing that any should perish. Your intercession for their soul is powerful and effective.</div>
+              <span class="need-card__cta">
+                Pray for Their Soul
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </span>
+            </div>
+          </a>
+
+          <a href="find-help-detail.html?category=guidance" class="need-card need-card--guidance">
+            <div class="need-card__icon-wrap">🧭</div>
+            <div class="need-card__body">
+              <div class="need-card__title">Direction &amp; Guidance</div>
+              <div class="need-card__desc">Standing at a crossroads in life — career, ministry, relocation, a major decision? God promises to direct your steps when you acknowledge Him. Let us seek His face together for clarity and wisdom.</div>
+              <span class="need-card__cta">
+                Seek God's Direction
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </span>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonies -->
+    <div class="testimony-strip">
+      <div class="container" style="margin-bottom:24px;">
+        <div style="text-align:center;">
+          <span class="section-header__label" style="color:rgba(255,255,255,0.7);">God is Still Answering</span>
+          <h2 style="color:#fff; margin-top:8px; font-family:var(--font-serif);">Recent Testimonies</h2>
+        </div>
+      </div>
+      <div class="testimony-strip__inner">
+        <div class="testimony-card">
+          <p class="testimony-card__quote">"I had fibroid for six years and doctors said I needed surgery. I came to the Miracle Service and Prophet Ayorinde prayed specifically for women with fibroid. Three weeks later my scan came back completely clear. Jesus did it!"</p>
+          <div class="testimony-card__name">Sister Ngozi Okafor</div>
+          <div class="testimony-card__need">Healing</div>
+        </div>
+        <div class="testimony-card">
+          <p class="testimony-card__quote">"My husband and I had been married for 11 years without children. We submitted our prayer request on this very page. That same month we attended the Anointing Fire Night and received a prophetic word. Nine months later our twins were born."</p>
+          <div class="testimony-card__name">Mama Adaeze &amp; Emmanuel</div>
+          <div class="testimony-card__need">Fruitfulness</div>
+        </div>
+        <div class="testimony-card">
+          <p class="testimony-card__quote">"I was made redundant and went six months without income. The church prayed with me and I kept attending the Miracle Services. The job I got paid three times what I was earning before. God is not a man that He should lie."</p>
+          <div class="testimony-card__name">Brother Tunde Fashola</div>
+          <div class="testimony-card__need">Financial Breakthrough</div>
+        </div>
+        <div class="testimony-card">
+          <p class="testimony-card__quote">"My son was deep in drug addiction for seven years. I submitted his name for prayer at WEBIC. After a miracle service he called me weeping and asked to come home. He is now serving in the children's ministry. Only God."</p>
+          <div class="testimony-card__name">Mrs. Funmi Adeleke</div>
+          <div class="testimony-card__need">Deliverance</div>
+        </div>
+        <div class="testimony-card">
+          <p class="testimony-card__quote">"I prayed for direction about relocating for work. At the very next service, Prophet Ayorinde gave a word that matched my exact situation. I had peace to go and God has blessed me here beyond what I imagined."</p>
+          <div class="testimony-card__name">Deacon Chukwuemeka</div>
+          <div class="testimony-card__need">Guidance</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Prayer Request Form -->
+    <section class="section prayer-section" id="prayer-request">
+      <div class="container">
+        <div class="prayer-form-card reveal">
+          <h3>Submit Your Prayer Request</h3>
+          <p>Your request will be received by our prayer team and treated with the utmost confidentiality. You are not alone in this.</p>
+
+          <form id="prayer-form" novalidate>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
+              <div class="form-group">
+                <label class="form-label" for="pr-firstname">First Name *</label>
+                <input type="text" id="pr-firstname" class="form-control" placeholder="Your first name" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="pr-lastname">Last Name</label>
+                <input type="text" id="pr-lastname" class="form-control" placeholder="Your last name" />
+              </div>
+            </div>
+
+            <div class="form-group" style="margin-bottom:16px;">
+              <label class="form-label" for="pr-phone">Phone / WhatsApp *</label>
+              <input type="tel" id="pr-phone" class="form-control" placeholder="+234 800 000 0000" required />
+            </div>
+
+            <div class="form-group" style="margin-bottom:16px;">
+              <label class="form-label" for="pr-email">Email Address (Optional)</label>
+              <input type="email" id="pr-email" class="form-control" placeholder="your@email.com" />
+            </div>
+
+            <div class="form-group" style="margin-bottom:20px;">
+              <label class="form-label">Prayer Category *</label>
+              <div class="prayer-category-select" id="prayer-cats">
+                <button type="button" class="prayer-cat-btn" data-cat="healing"><span>🙏</span><span>Healing</span></button>
+                <button type="button" class="prayer-cat-btn" data-cat="fruitfulness"><span>🌿</span><span>Fruitfulness</span></button>
+                <button type="button" class="prayer-cat-btn" data-cat="breakthrough"><span>⚡</span><span>Breakthrough</span></button>
+                <button type="button" class="prayer-cat-btn" data-cat="deliverance"><span>🔓</span><span>Deliverance</span></button>
+                <button type="button" class="prayer-cat-btn" data-cat="marriage"><span>💑</span><span>Marriage</span></button>
+                <button type="button" class="prayer-cat-btn" data-cat="finances"><span>💼</span><span>Finances</span></button>
+                <button type="button" class="prayer-cat-btn" data-cat="grief"><span>🕊️</span><span>Grief / Loss</span></button>
+                <button type="button" class="prayer-cat-btn" data-cat="salvation"><span>✝️</span><span>Salvation</span></button>
+                <button type="button" class="prayer-cat-btn" data-cat="guidance"><span>🧭</span><span>Guidance</span></button>
+              </div>
+              <input type="hidden" id="pr-category" name="category" />
+            </div>
+
+            <div class="form-group" style="margin-bottom:8px;">
+              <label class="form-label" for="pr-request">Your Prayer Request *</label>
+              <textarea id="pr-request" class="form-control" rows="6" placeholder="Share your prayer need here. Be as specific as you are comfortable with. God knows every detail and so will our intercessors..." maxlength="800" required></textarea>
+            </div>
+            <div class="char-counter"><span id="pr-char-count">0</span> / 800 characters</div>
+
+            <div class="prayer-privacy" style="margin-top:20px;">
+              <input type="checkbox" id="pr-urgent" />
+              <label for="pr-urgent">This is an urgent request — I need prayer as soon as possible.</label>
+            </div>
+
+            <div class="prayer-privacy">
+              <input type="checkbox" id="pr-private" />
+              <label for="pr-private">Keep my request private (only our lead intercessors will see this).</label>
+            </div>
+
+            <button type="submit" class="btn btn--primary btn--lg" style="width:100%; margin-top:8px;">
+              Send My Prayer Request
+            </button>
+
+            <p style="font-size:12.5px; color:var(--color-muted); text-align:center; margin-top:16px; line-height:1.5;">
+              Your information is kept strictly confidential and will never be shared with anyone outside our prayer team.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Other Ways to Reach Us -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-header__label">Other Ways to Connect</span>
+          <h2>Reach Our Prayer Team</h2>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:24px;" class="reveal">
+          <div style="background:#fff; border-radius:16px; padding:28px; box-shadow:0 2px 12px rgba(0,0,0,0.06); text-align:center;">
+            <div style="width:52px;height:52px;border-radius:50%;background:#E8EFFE;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:24px;">📞</div>
+            <div style="font-weight:600;font-size:16px;color:var(--color-heading);margin-bottom:6px;">Call Us</div>
+            <div style="font-size:14px;color:var(--color-muted);margin-bottom:12px;">Mon–Sat, 9am–5pm WAT</div>
+            <a href="tel:+2348033127704" style="color:var(--color-primary);font-weight:600;font-size:15px;text-decoration:none;">+234 803 312 7704</a>
+          </div>
+          <div style="background:#fff; border-radius:16px; padding:28px; box-shadow:0 2px 12px rgba(0,0,0,0.06); text-align:center;">
+            <div style="width:52px;height:52px;border-radius:50%;background:#E8F4E8;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:24px;">💬</div>
+            <div style="font-weight:600;font-size:16px;color:var(--color-heading);margin-bottom:6px;">WhatsApp</div>
+            <div style="font-size:14px;color:var(--color-muted);margin-bottom:12px;">Send a message anytime</div>
+            <a href="https://wa.me/2348033127704" target="_blank" style="color:#25D366;font-weight:600;font-size:15px;text-decoration:none;">Chat on WhatsApp</a>
+          </div>
+          <div style="background:#fff; border-radius:16px; padding:28px; box-shadow:0 2px 12px rgba(0,0,0,0.06); text-align:center;">
+            <div style="width:52px;height:52px;border-radius:50%;background:#FDE8E8;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:24px;">🏛️</div>
+            <div style="font-weight:600;font-size:16px;color:var(--color-heading);margin-bottom:6px;">Miracle Service</div>
+            <div style="font-size:14px;color:var(--color-muted);margin-bottom:12px;">Every Tuesday, 10am–1pm</div>
+            <a href="plan-visit.html" style="color:var(--color-accent);font-weight:600;font-size:15px;text-decoration:none;">Plan Your Visit</a>
+          </div>
+          <div style="background:#fff; border-radius:16px; padding:28px; box-shadow:0 2px 12px rgba(0,0,0,0.06); text-align:center;">
+            <div style="width:52px;height:52px;border-radius:50%;background:#FFF4E0;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:24px;">✉️</div>
+            <div style="font-weight:600;font-size:16px;color:var(--color-heading);margin-bottom:6px;">Email</div>
+            <div style="font-size:14px;color:var(--color-muted);margin-bottom:12px;">We respond within 24 hours</div>
+            <a href="mailto:prayer@webicworldwide.org" style="color:var(--color-primary);font-weight:600;font-size:15px;text-decoration:none;">prayer@webicworldwide.org</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scripture Banner -->
+    <div class="scripture-banner">
+      <p class="scripture-banner__text">"The effectual fervent prayer of a righteous man availeth much."</p>
+      <p class="scripture-banner__ref">James 5:16 (KJV)</p>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="index.html" class="footer__logo">
+            <img src="../Logos/images.jpg" alt="WEBIC" class="footer__logo-img" />
+            <div><div class="footer__logo-name">WEBIC</div><div class="footer__logo-sub">World Evangelism Bible Church</div></div>
+          </a>
+          <p class="footer__tagline">Raising World Evangelists for the End Times.</p>
+          <div class="footer__service-times">
+            <div class="footer__service-time"><span>Sunday Services</span><span>8:00am &amp; 10:30am</span></div>
+            <div class="footer__service-time"><span>Miracle Service (Tuesday)</span><span>10:00am – 1:00pm</span></div>
+          </div>
+          <div class="footer__socials mt-6">
+            <a href="https://www.facebook.com/webicworldwide/" class="footer__social" target="_blank">f</a>
+            <a href="https://www.instagram.com/webicworldwide/" class="footer__social" target="_blank">in</a>
+            <a href="https://www.youtube.com/@webicworldwide" class="footer__social" target="_blank">yt</a>
+          </div>
+        </div>
+        <div><h4 class="footer__col-title">Explore</h4><ul class="footer__links"><li><a href="about.html" class="footer__link">About WEBIC</a></li><li><a href="beliefs.html" class="footer__link">Our Beliefs</a></li><li><a href="ministries.html" class="footer__link">Ministries</a></li><li><a href="sermons.html" class="footer__link">Sermons</a></li></ul></div>
+        <div><h4 class="footer__col-title">Connect</h4><ul class="footer__links"><li><a href="plan-visit.html" class="footer__link">Plan a Visit</a></li><li><a href="give.html" class="footer__link">Give Online</a></li><li><a href="contact.html" class="footer__link">Contact Us</a></li></ul></div>
+        <div><h4 class="footer__col-title">Find Us</h4><ul class="footer__links"><li><span class="footer__link" style="cursor:default;color:rgba(255,255,255,0.55);">51-53 Ogudu Road<br>Ogudu, Lagos, Nigeria</span></li><li style="margin-top:8px;"><a href="tel:+2348033127704" class="footer__link">+234 803 312 7704</a></li></ul></div>
+      </div>
+      <div class="footer__bottom"><p>© 2025 World Evangelism Bible Church (WEBIC). All rights reserved.</p></div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/2348033127704" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="white"/></svg>
+  </a>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Prayer category buttons
+    const catBtns = document.querySelectorAll('.prayer-cat-btn');
+    const catInput = document.getElementById('pr-category');
+    catBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        catBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        catInput.value = btn.dataset.cat;
+      });
+    });
+
+    // Char counter
+    const textarea = document.getElementById('pr-request');
+    const counter = document.getElementById('pr-char-count');
+    if (textarea && counter) {
+      textarea.addEventListener('input', () => {
+        counter.textContent = textarea.value.length;
+      });
+    }
+
+    // Form submit
+    const prayerForm = document.getElementById('prayer-form');
+    if (prayerForm) {
+      prayerForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = document.getElementById('pr-firstname').value.trim();
+        const phone = document.getElementById('pr-phone').value.trim();
+        const request = document.getElementById('pr-request').value.trim();
+        if (!name || !phone || !request) {
+          alert('Please fill in your name, phone number, and prayer request.');
+          return;
+        }
+        const submitBtn = this.querySelector('[type="submit"]');
+        submitBtn.textContent = 'Prayer Request Sent ✓';
+        submitBtn.disabled = true;
+        submitBtn.style.background = '#16a34a';
+        setTimeout(() => {
+          prayerForm.reset();
+          catBtns.forEach(b => b.classList.remove('active'));
+          catInput.value = '';
+          counter.textContent = '0';
+          submitBtn.textContent = 'Send My Prayer Request';
+          submitBtn.disabled = false;
+          submitBtn.style.background = '';
+        }, 5000);
+      });
+    }
+  </script>
+</body>
+</html>
