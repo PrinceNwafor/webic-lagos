@@ -110,6 +110,7 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  overflow-x: hidden;
 }
 
 body {
@@ -313,11 +314,8 @@ blockquote {
 .nav__link--active { color: var(--color-accent) !important; }
 
 .nav__link--find-help {
-  color: var(--color-gold-light) !important;
   font-weight: 600;
 }
-
-.nav--scrolled .nav__link--find-help { color: var(--color-accent) !important; }
 
 .nav__actions {
   display: flex;
@@ -387,7 +385,6 @@ blockquote {
 }
 
 .mobile-nav__link:hover { color: var(--color-gold-light); }
-.mobile-nav__link--find-help { color: var(--color-gold-light); }
 
 /* --------------------------------------------------------------------------
    6. BUTTONS & CTAs
@@ -1608,6 +1605,9 @@ blockquote {
   div[style*="grid-template-columns: 1fr 1fr"] > * {
     margin-bottom: 2rem;
   }
+
+  /* Hide the absolute-positioned welcome visual card stack on mobile */
+  .welcome-visual { display: none !important; }
 
   .nav__logo-sub { display: none; }
 }
