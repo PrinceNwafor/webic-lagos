@@ -1630,3 +1630,203 @@ blockquote {
   body { font-size: 12pt; }
   h1, h2, h3 { page-break-after: avoid; }
 }
+
+/* --------------------------------------------------------------------------
+   24. PASTOR / TEAM PHOTO GRIDS
+   -------------------------------------------------------------------------- */
+.pastor-grid {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 60px;
+  align-items: start;
+}
+.pastor-grid--equal {
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .pastor-grid,
+  .pastor-grid--equal {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .pastor-grid > div:first-child,
+  .pastor-grid--equal > div:last-child {
+    order: -1;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   25. COMPREHENSIVE MOBILE ALIGNMENT FIXES
+   -------------------------------------------------------------------------- */
+
+/* ── Nav ── */
+@media (max-width: 1024px) {
+  .nav__inner { padding: 0 var(--space-5); }
+  .nav__logo-text { font-size: var(--text-lg); }
+}
+
+@media (max-width: 480px) {
+  .nav__inner { padding: 0 var(--space-4); }
+  .nav__logo-text { font-size: 1rem; }
+  .nav__logo-img { width: 38px; height: 38px; }
+}
+
+/* ── Hero (index.html) ── */
+@media (max-width: 768px) {
+  .hero { min-height: 90vh; }
+  .hero__inner { padding: 0 var(--space-5); }
+  .hero__title { font-size: clamp(2rem, 8vw, 3rem); }
+  .hero__subtitle { font-size: var(--text-base); max-width: 100%; }
+  .hero__actions { flex-direction: column; align-items: stretch; gap: var(--space-3); }
+  .hero__actions .btn { width: 100%; text-align: center; justify-content: center; }
+}
+
+/* ── Page hero (inner pages) ── */
+.page-hero {
+  padding-left: var(--space-5);
+  padding-right: var(--space-5);
+}
+@media (max-width: 480px) {
+  .page-hero { text-align: center; }
+  .page-hero__title { font-size: clamp(1.8rem, 7vw, 2.5rem); }
+  .page-hero__subtitle { font-size: var(--text-sm); }
+}
+
+/* ── Section header ── */
+@media (max-width: 768px) {
+  .section-header { text-align: center; }
+  .section-header h2 { font-size: clamp(1.6rem, 6vw, 2.2rem); }
+  .section-header__desc { font-size: var(--text-sm); }
+}
+
+/* ── Inline 2-column grids (belt-and-braces) ── */
+@media (max-width: 768px) {
+  div[style*="grid-template-columns:1fr 2fr"],
+  div[style*="grid-template-columns: 1fr 2fr"],
+  div[style*="grid-template-columns:2fr 1fr"],
+  div[style*="grid-template-columns: 2fr 1fr"],
+  div[style*="grid-template-columns:1fr 1fr"],
+  div[style*="grid-template-columns: 1fr 1fr"],
+  div[style*="grid-template-columns:1fr 3fr"],
+  div[style*="grid-template-columns: 1fr 3fr"] {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 28px !important;
+  }
+}
+
+/* ── Sermon cards ── */
+@media (max-width: 768px) {
+  .sermon-card { flex-direction: column; }
+  .sermon-card__thumb { width: 100%; height: 200px; border-radius: 12px 12px 0 0; }
+  .sermon-card__body { padding: var(--space-5); }
+}
+
+/* ── Event list ── */
+@media (max-width: 640px) {
+  .event-item { flex-direction: column; gap: var(--space-4); }
+  .event-item__date-block { min-width: unset; width: 60px; }
+  .event-item__meta { flex-wrap: wrap; gap: var(--space-2); }
+}
+
+/* ── Stats grid ── */
+@media (max-width: 640px) {
+  .stats-grid,
+  .grid.grid-4 { grid-template-columns: repeat(2, 1fr) !important; gap: var(--space-4); }
+  .stat-card__number { font-size: var(--text-4xl); }
+}
+
+/* ── Giving page ── */
+@media (max-width: 640px) {
+  .give-split { flex-direction: column; }
+  .give-split > * { width: 100%; }
+  .amount-btn { padding: var(--space-3) var(--space-2); font-size: var(--text-sm); }
+}
+
+/* ── Ministry cards ── */
+@media (max-width: 640px) {
+  .ministry-grid,
+  .grid.grid-3 { grid-template-columns: 1fr !important; }
+}
+
+/* ── Contact / Plan Visit forms ── */
+@media (max-width: 640px) {
+  .form-row,
+  .form-two-col { grid-template-columns: 1fr !important; }
+  .contact-methods { grid-template-columns: 1fr !important; }
+}
+
+/* ── Footer ── */
+@media (max-width: 480px) {
+  .footer { padding: var(--space-12) 0 var(--space-8); }
+  .footer__grid { grid-template-columns: 1fr; gap: var(--space-8); }
+  .footer__service-time { flex-direction: column; gap: 2px; }
+  .footer__service-time span:last-child { font-size: var(--text-xs); }
+  .footer__tagline { max-width: 100%; }
+}
+
+/* ── WhatsApp float ── */
+@media (max-width: 480px) {
+  .whatsapp-float { bottom: 16px; right: 16px; width: 52px; height: 52px; }
+  .whatsapp-float svg { width: 26px; height: 26px; }
+}
+
+/* ── Belief items ── */
+@media (max-width: 640px) {
+  .belief-item { gap: var(--space-3); }
+  .belief-item__number { font-size: var(--text-4xl); }
+  .belief-item__title { font-size: var(--text-lg); }
+}
+
+/* ── Scroll-reveal: always show on mobile (prevents stuck-invisible elements) ── */
+@media (max-width: 768px) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* ── General image responsiveness ── */
+img { max-width: 100%; height: auto; display: block; }
+
+/* ── Prevent horizontal overflow globally ── */
+* { max-width: 100%; }
+img, video, iframe { max-width: 100%; }
+
+/* ── Buttons full-width on very small screens ── */
+@media (max-width: 400px) {
+  .btn--lg { padding: var(--space-3) var(--space-5); font-size: var(--text-sm); }
+  .btn { min-width: unset; }
+}
+
+/* ── Scripture banner ── */
+@media (max-width: 640px) {
+  .scripture-banner { padding: var(--space-10) var(--space-5); text-align: center; }
+  .scripture-banner__text { font-size: var(--text-lg); }
+}
+
+/* ── Service bar ── */
+@media (max-width: 640px) {
+  .service-bar__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+    padding: var(--space-4) var(--space-5);
+  }
+  .service-bar__divider { display: none; }
+}
+
+/* ── Find-help / prayer detail grid ── */
+@media (max-width: 768px) {
+  .prayer-form-card { padding: var(--space-6) var(--space-5); }
+  .prayer-category-select { grid-template-columns: repeat(2, 1fr); }
+  .how-steps { grid-template-columns: repeat(2, 1fr); gap: var(--space-6); }
+  .need-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 400px) {
+  .prayer-category-select { grid-template-columns: repeat(2, 1fr); }
+  .how-steps { grid-template-columns: 1fr; }
+}
