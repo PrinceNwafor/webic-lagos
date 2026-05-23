@@ -1,4 +1,4 @@
-/* ==========================================================================
+﻿/* ==========================================================================
    WORLD EVANGELISM BIBLE CHURCH (WEBIC) — MASTER STYLESHEET
    Brand Colors: Royal Blue (#163580) + Crimson Red (#CC1111) + Gold (#D4A520)
    ========================================================================== */
@@ -313,7 +313,8 @@ blockquote {
 .nav__link:hover,
 .nav__link--active { color: var(--color-accent) !important; }
 
-.nav__link--find-help {
+.nav__link--sermons {
+  color: var(--color-accent) !important;
   font-weight: 600;
 }
 
